@@ -5,10 +5,7 @@
                 <mat-label>Agent</mat-label>
                 <mat-icon matPrefix>supervised_user_circle</mat-icon>
                 <mat-select disableOptionCentering formControlName="agent" panelClass="dropdown" (selectionChange)="changeAgent($event)">
-                    <!-- <mat-option value="harvey.pelar">Harvey Pekar</mat-option>
-                    <mat-option value="jonah.jameson">Jonah Jameson</mat-option>
-                    <mat-option value="jenny.sparks">Jenny Sparks</mat-option>
-                    <mat-option value="scott.pilgrim">Scott Pilgrim</mat-option> -->
+                    <mat-option *ngFor="let agent of agents" [value]="agent"> {{agent.full_name}}</mat-option>
                 </mat-select>
             </mat-form-field>
 
@@ -21,6 +18,8 @@
 
         <div id="intensity-selection" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="24px">
             MATCHING SENSITIVITY
+            <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+
         </div>
     </div>
 </ng-template>
@@ -96,8 +95,13 @@
     </mat-card>
 </section>
 
-<ng-template>
-    <div class="empty-state" *ngIf="!isAgentSelected">
-        No data to be displayed
+
+<div class="empty-state" *ngIf="!isAgentSelected" fxLayout="row" fxFlexFill fxLayoutAlign="center center">
+    <div>
+        <img src="../../../../assets/img/empty_page.png" alt="">
+        <h2>Selection Pending</h2>
+        <p>Select a call from top menu and a transcript </p>
+        <p class="text-center">analysis will be shown</p>
     </div>
-</ng-template>
+
+</div>

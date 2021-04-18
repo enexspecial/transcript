@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 
 import TemplateService from 'src/app/core/services/template.service';
-
+import UserService from 'src/app/core/services/user.service' 
 @Component({
     selector: 'app-analyzer',
     templateUrl: './analyzer.component.html',
@@ -30,9 +30,12 @@ export default class AnalyzerComponent implements OnInit, AfterViewInit {
     }
     private _form: FormGroup;
 
+    public agents:any
+
     constructor(
         private _tplService: TemplateService,
-        private _fb: FormBuilder
+        private _fb: FormBuilder,
+        private _userServ: UserService
     ) {
         this._form = this._fb.group({
             agent: _fb.control(null),
@@ -46,7 +49,11 @@ export default class AnalyzerComponent implements OnInit, AfterViewInit {
     ngOnInit(): void {
         this.dataSource.data = MOCK_DATA();
         this.dataSourceRep.data = MOCK_DATA().slice(-25);
-
+        // Add Agents From JSON.data
+        this._userServ.getAllSystemAgents().subscribe((res:any)=>{
+            this.agents = res
+        })
+       
     }
 
     ngAfterViewInit(): void {

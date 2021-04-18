@@ -1,6 +1,5 @@
 $mat-card-header-bg: #EFEFF1 !default;
 $mat-card-header-border-color: rgba(#000, .12) !default;
-
 .flex {
     display: flex;
     justify-items: space-between;
@@ -8,7 +7,6 @@ $mat-card-header-border-color: rgba(#000, .12) !default;
 
 mat-card {
     padding: 0 !important;
-    
     mat-card-header {
         box-sizing: border-box;
         padding: 16px 24px;
@@ -30,16 +28,13 @@ mat-card {
     &-time {
         width: 64px;
     }
-
     &-speaker {
         width: 72px;
     }
-
     &-sentence:not(.mat-header-cell) {
         .matcher {
             background: rgba(#5A5A71, .2);
             transition: background .2s;
-
             &:hover {
                 background: rgba(#5A5A71, .4);
             }
@@ -53,4 +48,8 @@ tr.mat-row {
 
 td.mat-cell {
     border-bottom: none;
+}
+
+.text-center {
+    align-items: center;
 }
